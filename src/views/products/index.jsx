@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom"; // gunakan react-router-dom
-import Api from "../../api";
+import Api from "../../api/index";
 
 export default function ProductIndex() {
   // Fetch data from API using react-query

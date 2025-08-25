@@ -10,6 +10,9 @@ import ProductIndex from "../views/products/index";
 // Import view ProductCreate
 import ProductCreate from "../views/products/create";
 
+// Import view ProductEdit
+import ProductEdit from "../views/products/edit";
+
 // Definisikan component dengan (Functional Component)
 const RoutesIndex = () => {
     return (
@@ -22,6 +25,9 @@ const RoutesIndex = () => {
 
             {/* Route untuk halaman tambah produk */}
             <Route path="/products/create" element={<ProductCreate />} />
+
+            {/* Route untuk halaman edit produk */}
+            <Route path="/products/edit/:id" element={<ProductEdit />} />
         </Routes>
     );
 };

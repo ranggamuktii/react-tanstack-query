@@ -21,6 +21,7 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage });
 
+
 // serve file statis
 app.use("/uploads", express.static(uploadDir));
 
@@ -50,7 +51,36 @@ app.post("/api/products", upload.single("image"), (req, res) => {
   res.status(201).json({ data: product });
 });
 
-/** OPTIONAL: DELETE /api/products/:id */
+/** DETAIL: GET /api/products/:id */
+app.get("/api/products/:id", (req, res) => {
+  const idx = findIndex(req.params.id);
+  if (idx === -1) return res.status(404).json({ message: "Not found" });
+  res.json({ data: products[idx] });
+});
+
+/** UPDATE: PUT /api/products/:id  (dukung _method=PUT juga) */
+app.put("/api/products/:id", upload.single("image"), (req, res) => {
+  const idx = findIndex(req.params.id);
+  if (idx === -1) return res.status(404).json({ message: "Not found" });
+
+  const { title, description, price, stock } = req.body;
+  const old = products[idx];
+  const imgPath = req.file ? `/uploads/${req.file.filename}` : old.image;
+
+  const updated = {
+    ...old,
+    title: title ?? old.title,
+    description: description ?? old.description,
+    price: price != null ? Number(price) : old.price,
+    stock: stock != null ? Number(stock) : old.stock,
+    image: imgPath,
+  };
+
+  products[idx] = updated;
+  res.json({ data: updated });
+});
+
+/** DELETE: DELETE /api/products/:id */
 app.delete("/api/products/:id", (req, res) => {
   const idx = findIndex(req.params.id);
   if (idx === -1) return res.status(404).json({ message: "Not found" });

@@ -1,5 +1,5 @@
 // Import React Router
-import { Routes, Route } from "react-router";
+import { Routes, Route } from "react-router-dom";
 
 // Import view HomePage
 import Home from "../views/home";

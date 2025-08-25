@@ -1,7 +1,7 @@
 import { useState, useMemo, useEffect } from "react";
 import { useNavigate } from "react-router-dom"; // gunakan react-router-dom
 import { useMutation } from "@tanstack/react-query";
-import Api from "../../api";
+import Api from "../../api/index";
 
 export default function ProductCreate() {
   // State form

@@ -7,6 +7,9 @@ import Home from "../views/home";
 //import view ProductIndex
 import ProductIndex from "../views/products/index";
 
+// Import view ProductCreate
+import ProductCreate from "../views/products/create";
+
 // Definisikan component dengan (Functional Component)
 const RoutesIndex = () => {
     return (
@@ -16,6 +19,9 @@ const RoutesIndex = () => {
 
             {/* Route untuk halaman produk */}
             <Route path="/products" element={<ProductIndex />} />
+
+            {/* Route untuk halaman tambah produk */}
+            <Route path="/products/create" element={<ProductCreate />} />
         </Routes>
     );
 };

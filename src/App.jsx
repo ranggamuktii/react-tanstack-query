@@ -1,8 +1,6 @@
 import { useState } from "react";
-import { Link, NavLink } from "react-router-dom"; // gunakan react-router-dom
-
-// import Routes milik Anda
-import Routes from "./routes";
+import { Link, NavLink } from "react-router-dom";
+import Routes from "./routes/index";
 
 export default function App() {
   const [open, setOpen] = useState(false);
@@ -35,18 +33,6 @@ export default function App() {
                   PRODUCTS
                 </NavLink>
               </div>
-            </div>
-
-            {/* Kanan: CTA (desktop) */}
-            <div className="hidden md:flex items-center gap-3">
-              <a
-                href="https://santrikoding.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center rounded-full px-4 py-2 text-sm font-semibold text-white bg-emerald-600 hover:bg-emerald-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-emerald-600"
-              >
-                SANTRIKODING.COM
-              </a>
             </div>
 
             {/* Tombol menu mobile */}
@@ -87,15 +73,6 @@ export default function App() {
             <NavLink to="/products" className={navLink} onClick={() => setOpen(false)}>
               PRODUCTS
             </NavLink>
-
-            <a
-              href="https://santrikoding.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-2 inline-flex w-full items-center justify-center rounded-full px-4 py-2 text-sm font-semibold text-white bg-emerald-600 hover:bg-emerald-700"
-            >
-              SANTRIKODING.COM
-            </a>
           </div>
         </div>
       </nav>

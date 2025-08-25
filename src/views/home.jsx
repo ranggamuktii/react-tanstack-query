@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-slate-50 to-white dark:from-slate-950 dark:to-slate-900">
@@ -16,33 +18,24 @@ export default function Home() {
           <div className="relative px-8 py-14 md:px-12 md:py-16">
             <div className="mx-auto max-w-3xl text-center">
               <span className="inline-flex items-center gap-2 rounded-full bg-indigo-50 px-3 py-1 text-sm font-medium text-indigo-700 ring-1 ring-inset ring-indigo-200 dark:bg-indigo-500/10 dark:text-indigo-300 dark:ring-indigo-500/30">
-                Tutorial
+                Project Pribadi
               </span>
 
               <h1 className="mt-4 text-4xl font-bold tracking-tight text-slate-900 md:text-5xl lg:text-6xl dark:text-white">
-                REACT + TANSTACK QUERY
+                React + TanStack Query
               </h1>
 
               <p className="mt-4 text-lg leading-relaxed text-slate-600 md:text-xl dark:text-slate-300">
-                Belajar CRUD dengan React dan Tanstack Query di SantriKoding.com
+                Demo CRUD dengan React dan TanStack Query.
               </p>
 
-              <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-                <a
-                  href="https://santrikoding.com"
-                  target="_blank"
-                  rel="noreferrer"
+              <div className="mt-8 flex items-center justify-center">
+                <Link
+                  to="/products"
                   className="inline-flex items-center justify-center rounded-xl px-5 py-3 text-base font-semibold shadow-sm bg-indigo-600 text-white transition hover:bg-indigo-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-indigo-600"
                 >
-                  Mulai Belajar
-                </a>
-
-                <a
-                  href="#"
-                  className="inline-flex items-center justify-center rounded-xl px-5 py-3 text-base font-semibold ring-1 ring-slate-300 text-slate-700 hover:bg-slate-50 dark:text-slate-200 dark:ring-slate-700/60 dark:hover:bg-slate-800"
-                >
-                  Dokumentasi
-                </a>
+                  Mulai
+                </Link>
               </div>
             </div>
           </div>

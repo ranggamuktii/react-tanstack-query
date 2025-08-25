@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-body {
+:root {
    background-color: lightgray;
     font-family: 'Quicksand', sans-serif
 }

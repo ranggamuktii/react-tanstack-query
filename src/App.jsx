@@ -1,35 +1,107 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import { Link, NavLink } from "react-router-dom"; // gunakan react-router-dom
 
-function App() {
-  const [count, setCount] = useState(0)
+// import Routes milik Anda
+import Routes from "./routes";
+
+export default function App() {
+  const [open, setOpen] = useState(false);
+
+  const navLink = ({ isActive }) =>
+    [
+      "block rounded-lg px-3 py-2 text-sm font-medium transition",
+      isActive
+        ? "text-white bg-white/10"
+        : "text-slate-300 hover:text-white hover:bg-white/10",
+    ].join(" ");
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+      {/* NAVBAR */}
+      <nav className="sticky top-0 z-50 border-b border-white/10 bg-slate-900/80 backdrop-blur">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="flex h-16 items-center justify-between">
+            {/* Kiri: Brand + Menu (desktop) */}
+            <div className="flex items-center gap-8">
+              <Link
+                to="/"
+                className="text-white font-semibold tracking-wide hover:opacity-90"
+              >
+                HOME
+              </Link>
 
-export default App
+              <div className="hidden md:flex items-center gap-2">
+                <NavLink to="/products" className={navLink}>
+                  PRODUCTS
+                </NavLink>
+              </div>
+            </div>
+
+            {/* Kanan: CTA (desktop) */}
+            <div className="hidden md:flex items-center gap-3">
+              <a
+                href="https://santrikoding.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center rounded-full px-4 py-2 text-sm font-semibold text-white bg-emerald-600 hover:bg-emerald-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-emerald-600"
+              >
+                SANTRIKODING.COM
+              </a>
+            </div>
+
+            {/* Tombol menu mobile */}
+            <button
+              className="md:hidden inline-flex items-center justify-center rounded-md p-2 text-slate-200 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white"
+              aria-controls="mobile-menu"
+              aria-expanded={open}
+              onClick={() => setOpen((o) => !o)}
+            >
+              <span className="sr-only">Toggle navigation</span>
+              {/* Icon hamburger */}
+              <svg
+                className={`h-6 w-6 ${open ? "hidden" : "block"}`}
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5" />
+              </svg>
+              {/* Icon close */}
+              <svg
+                className={`h-6 w-6 ${open ? "block" : "hidden"}`}
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        {/* MENU MOBILE */}
+        <div id="mobile-menu" className={`${open ? "block" : "hidden"} md:hidden`}>
+          <div className="space-y-1 px-4 pb-4 pt-2">
+            <NavLink to="/products" className={navLink} onClick={() => setOpen(false)}>
+              PRODUCTS
+            </NavLink>
+
+            <a
+              href="https://santrikoding.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-2 inline-flex w-full items-center justify-center rounded-full px-4 py-2 text-sm font-semibold text-white bg-emerald-600 hover:bg-emerald-700"
+            >
+              SANTRIKODING.COM
+            </a>
+          </div>
+        </div>
+      </nav>
+
+      {/* ROUTES */}
+      <Routes />
+    </>
+  );
+}
